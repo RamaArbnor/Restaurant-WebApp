@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.LoginPage {
+  background-image: url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/classy-restaurant.jpg);
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.LoginPanel {
+  width: 25rem;
+  height: 30rem;
+  background: rgba(42, 53, 81, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(42, 53, 81, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.usernameInput {
+  margin-top: 4rem;
+}
+.usernameInput, .passwordInput{
+  height: 4rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.LoginPanel input {
+  height: 2.5rem;
+  width: 14rem;
+  margin: 0rem 1rem;
+  padding-left: 10px;
+  border: none;
+  border-radius: 20px;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+#tittle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+}
+
+#logInBtn {
+  width: 7rem;
+  height: 2rem;
+  border: none;
+  background-color: orange;
+  border-radius: 2rem;
+  filter: drop-shadow(5px 5px 1px #3b444b);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  font-weight: bold;
+
+}
+
+#logInBtn:active {
+  filter: drop-shadow(2px 2px 1px #3b444b);
+  background-color: rgba(255, 166, 0, 0.466);
+
+  /* color: red; */
 }
