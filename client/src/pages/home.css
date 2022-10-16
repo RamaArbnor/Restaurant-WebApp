@@ -1,0 +1,132 @@
+.home {
+    display: flex;
+    flex-direction: row;
+    background-color: #EBEBEB;
+    height: 100vh;
+    padding: 0.01rem;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-evenly; */
+
+    font-size: 3.5rem;
+
+    background-color: #FFFFFF;
+    width: 12%;
+    height: 95%;
+    margin: 1rem;
+    /* padding: 3rem 0; */
+
+
+    border-radius: 25px;
+
+}
+
+.options {
+    padding-bottom: 11rem;
+    padding-top: 7.5rem;
+
+}
+
+.menu,
+.tables {
+    padding-bottom: 5rem;
+}
+
+.log-out {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.home i:hover {
+    color: forestgreen;
+}
+
+.main {
+    width: 100%;
+    margin: 1rem;
+}
+
+.nav {
+    width: 100%;
+    height: 10vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5rem;
+
+    background-color: #FFFFFF;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.nav-item {
+    width: fit-content;
+    height: fit-content;
+    padding: 0.2rem 1.2rem;
+    margin: 1rem;
+    background-color: #EFEFEF;
+    border-radius: 50px;
+}
+
+.nav-item:hover {
+    background-color: #8a8181;
+
+}
+
+.active {
+    background-color: limegreen;
+}
+
+.border {
+    border: 2px solid red;
+}
+
+.main-container {
+    width: 99.5%;
+    height: 87%;
+    display: flex;
+    flex-direction: row;
+}
+
+.items-menu {
+    width: 70%;
+    height: 95.5%;
+    margin: 1rem;
+}
+
+.bill {
+    margin: 1rem;
+    width: 30%;
+    background-color: #FFFFFF;
+
+}
+
+.bill-name {
+    /* filter: drop-shadow(0px 4px 4px black); */
+    width: 100%;
+    height: 10vh;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+    color: #FB8700;
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
+
+}
