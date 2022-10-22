@@ -1,0 +1,23 @@
+.item-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item {
+    width: 90%;
+    height: 90%;
+    background-color: #FFFFFF;
+
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+
+}
+
+.item-img {
+    width: 80%;
+    height: 50%;
+    border: 1px solid red;
+}

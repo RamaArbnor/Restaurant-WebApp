@@ -1,4 +1,5 @@
 import './home.css'
+import Item from '../components/Item.js'
 
 export default function Home(props) {
 
@@ -47,11 +48,28 @@ export default function Home(props) {
                     </div>
                 </div>
 
-                <div className='main-container border'>
-                    <div className='items-menu border'>
-
+                <div className='main-container '>
+                    <div className='items-menu '>
+                        <Item 
+                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
+                        />
+                        <Item 
+                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
+                        />
+                        <Item 
+                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
+                        />
+                        <Item 
+                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
+                        />
+                        <Item 
+                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
+                        /><Item 
+                        img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
+                    />
+                        
                     </div>
-                    <div className='bill border'>   
+                    <div className='bill '>   
                         <div className='bill-name'>
                             <p>Table #01</p>
                         </div>
