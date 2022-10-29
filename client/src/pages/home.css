@@ -35,12 +35,17 @@
 .options {
     padding-bottom: 11rem;
     padding-top: 7.5rem;
-
+    width: 100%;
+    display: flexs;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .menu,
 .tables {
     padding-bottom: 5rem;
+    /* width: 200%; */
 }
 
 .log-out {
@@ -48,8 +53,8 @@
     margin-top: 2rem;
 }
 
-.home i:hover {
-    color: forestgreen;
+.options div:hover {
+    color: red;
 }
 
 .main {

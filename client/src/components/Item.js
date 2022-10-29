@@ -10,7 +10,7 @@ export default function Item(props){
                 
                 <div className='price-bar '>
 
-                <p>Price :</p>
+                <p>Price : {props.price}$</p>
                 <div className = 'plus'> + </div>
 
                 </div>

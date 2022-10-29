@@ -1,80 +1,32 @@
 import './home.css'
-import Item from '../components/Item.js'
+import Sidebar from './Sidebar'
+import Nav from '../components/Nav'
+import Main from './Main'
+import { useState } from 'react'
 
 export default function Home(props) {
 
+    const [menu, setMenu] = useState('main')
+
+    function handleSidebar(tittle){
+        setMenu(tittle)
+    }
+
     return (
         <div className='home'>
-            <div className="sidebar">
-                <div className='logo'>
-                    <i class="fa-solid fa-mug-hot"></i>
-                    <span>Coffe</span>
-                </div>
+            <Sidebar 
+                menu = {handleSidebar}
+            />
 
-                <div className='options hover'>
-                    <div className='menu'>
-                        <i class="fa-solid fa-bars"></i>
-                    </div>
-
-                    <div className='tables hover'>
-                        <i class="fa-solid fa-chair"></i>
-                    </div>
-
-                    <div className='add hover'>
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-
-                </div>
-
-                <div className='log-out hover'>
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </div>
-
-            </div>
             {/* Left Side Of the Home Page */}
             <div className='main'>
-                <div className='nav'>
-                    <div className='nav-item active'>
-                        Coffe
-                    </div>
-                    <div className='nav-item'>
-                        Food
-                    </div>
-                    <div className='nav-item'>
-                        Drinks
-                    </div>
-                    <div className='nav-item'>
-                        Dessert
-                    </div>
-                </div>
+                <Nav />
+                {menu === 'main' && <Main />}
 
-                <div className='main-container '>
-                    <div className='items-menu '>
-                        <Item 
-                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
-                        />
-                        <Item 
-                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
-                        />
-                        <Item 
-                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
-                        />
-                        <Item 
-                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
-                        />
-                        <Item 
-                            img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
-                        /><Item 
-                        img='https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
-                    />
-                        
-                    </div>
-                    <div className='bill '>   
-                        <div className='bill-name'>
-                            <p>Table #01</p>
-                        </div>
-                    </div>
-                </div>
+                {menu === 'tables' && <h1>tables</h1>}
+
+                
+                
             </div>
         </div>
     )
