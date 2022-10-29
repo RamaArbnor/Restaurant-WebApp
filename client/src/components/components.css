@@ -11,13 +11,38 @@
     border-radius: 15px;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
 
 }
 
 .item-img {
     width: 80%;
     height: 50%;
-    border: 1px solid red;
+    border-radius: 15px;
+    /* border: 1px solid red; */
+}
+
+.price-bar {
+    padding: 0 2rem;
+    height: 15%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+}
+
+.plus {
+    background-color: limegreen;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    line-height: 2.5rem;
+    border-radius: 50%;
+    color: white;
+    font-size: 2rem;
 }
