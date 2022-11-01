@@ -2,7 +2,7 @@ import './home.css'
 import Item from '../components/Item.js'
 
 
-export default function Main() {
+export default function Main({table}) {
 
     let img = 'https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
 
@@ -39,7 +39,7 @@ export default function Main() {
             </div>
             <div className='bill '>
                 <div className='bill-name'>
-                    <p>Table #01</p>
+                    <p>Table #0{table}</p>
                 </div>
             </div>
         </div>

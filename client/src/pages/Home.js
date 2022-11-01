@@ -3,10 +3,12 @@ import Sidebar from './Sidebar'
 import Nav from '../components/Nav'
 import Main from './Main'
 import { useState } from 'react'
+import TablesMenu from './TablesMenu'
 
 export default function Home(props) {
 
-    const [menu, setMenu] = useState('main')
+    const [menu, setMenu] = useState('main');
+    const [activeTable, setActiveTable] = useState(1)
 
     function handleSidebar(tittle){
         setMenu(tittle)
@@ -14,16 +16,17 @@ export default function Home(props) {
 
     return (
         <div className='home'>
-            <Sidebar 
+            {/* <Sidebar 
                 menu = {handleSidebar}
-            />
+                
+            /> */}
 
             {/* Left Side Of the Home Page */}
             <div className='main'>
                 <Nav />
-                {menu === 'main' && <Main />}
+                {menu === 'main' && <Main table={activeTable}/>}
 
-                {menu === 'tables' && <h1>tables</h1>}
+                {menu === 'tables' && <TablesMenu />}
 
                 
                 
