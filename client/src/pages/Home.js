@@ -7,11 +7,13 @@ import TablesMenu from './TablesMenu'
 
 export default function Home(props) {
 
-    const [menu, setMenu] = useState('main');
+    const [menu, setMenu] = useState('tables');
     const [activeTable, setActiveTable] = useState(1)
 
-    function handleSidebar(tittle){
+    function handleSidebar(tittle, activeTable){
+        let a;
         setMenu(tittle)
+        activeTable !== 'ignore' ? setActiveTable(activeTable.number) : a = 0
     }
 
     return (
@@ -24,9 +26,9 @@ export default function Home(props) {
             {/* Left Side Of the Home Page */}
             <div className='main'>
                 <Nav />
-                {menu === 'main' && <Main table={activeTable}/>}
+                {menu === 'main' && <Main table={activeTable} menu={handleSidebar}/>}
 
-                {menu === 'tables' && <TablesMenu />}
+                {menu === 'tables' && <TablesMenu menu={handleSidebar}/>}
 
                 
                 

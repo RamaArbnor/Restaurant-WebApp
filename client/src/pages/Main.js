@@ -2,7 +2,7 @@ import './home.css'
 import Item from '../components/Item.js'
 
 
-export default function Main({table}) {
+export default function Main({table, menu}) {
 
     let img = 'https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
 
@@ -38,7 +38,7 @@ export default function Main({table}) {
 
             </div>
             <div className='bill '>
-                <div className='bill-name'>
+                <div className='bill-name' onClick={() => menu('tables', 'ignore')}>
                     <p>Table #0{table}</p>
                 </div>
             </div>
