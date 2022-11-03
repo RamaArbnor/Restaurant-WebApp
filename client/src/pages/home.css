@@ -71,18 +71,14 @@
 
 .items-menu {
     width: 70%;
-    height: 95.5%;
+    /* height: 95.5%; */
     margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(3,33%);  /* 3 columns */
-    /* 3 rows  */
-    /* grid-template-rows: repeat(2,50%);  */
-    /*50 pixels of space added between rows and 30 pixels added between columns */
-
-    /* grid-gap:20px 30px;  */
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    /* align-items: center; */
-    /* place-items: center; */
+    overflow-y: scroll;
+    box-sizing: content-box;
+
 }
 
 .bill {

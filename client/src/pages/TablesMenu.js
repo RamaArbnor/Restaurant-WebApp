@@ -32,13 +32,14 @@ export default function TablesMenu({menu}) {
     }, [])
 
     return (
-        <div className="tablesMenu ">
+        <div className="tablesMenu">
             {true && tables.map((table) => {
                     // setTotal(total + bill.amount)
 
                     return (
                         <Table
                             key = {table._id}
+                            id = {table._id}
                             busy = {table.busy}
                             number={table.label}
                             menu = {menu}

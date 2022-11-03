@@ -4,9 +4,10 @@ export default function Item(props){
 
     return(
         <div className='item-holder '>
-            <div className='item'>
+                <small>{props.id}</small>
+            <div className='item '>
                 <img src={props.img} className='item-img '/>
-                <h3>Coffe</h3>
+                <h3>{props.name}</h3>
                 
                 <div className='price-bar '>
 
