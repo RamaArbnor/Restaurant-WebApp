@@ -33,7 +33,7 @@ export default function TablesMenu({menu}) {
 
     return (
         <div className="tablesMenu">
-            {true && tables.map((table) => {
+            {tables.map((table) => {
                     // setTotal(total + bill.amount)
 
                     return (
@@ -48,7 +48,7 @@ export default function TablesMenu({menu}) {
                     );
                 })}
 
-            <div> + </div>
+            <div className='add'/>
         </div>
     )
 

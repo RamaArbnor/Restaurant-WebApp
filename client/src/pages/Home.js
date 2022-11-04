@@ -13,7 +13,8 @@ export default function Home(props) {
     function handleSidebar(tittle, activeTable){
         let a;
         setMenu(tittle)
-        activeTable !== 'ignore' ? setActiveTable(activeTable.number) : a = 0
+        activeTable !== 'ignore' ? setActiveTable(activeTable) : a = 0
+        console.log(activeTable.id)
     }
 
     return (

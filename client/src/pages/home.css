@@ -3,7 +3,7 @@
     flex-direction: row;
     background-color: #EBEBEB;
     height: 100vh;
-    
+
 }
 
 /*  */
@@ -19,21 +19,22 @@
 
 .main {
     width: 100%;
-    
+
 }
+
 /***************** Nav Css ******************/
 
-.nav{
+.nav {
     background-color: #FFFFFF;
     display: flex;
     flex-direction: row;
     font-size: 2rem;
     padding: 1.5rem;
     align-items: center;
-    
+
 }
 
-.nav-options{
+.nav-options {
     width: 80%;
 
     display: flex;
@@ -55,6 +56,7 @@
     font-weight: bold;
     color: limegreen;
 }
+
 /***************** end Nav Css ******************/
 
 
@@ -115,4 +117,24 @@
     justify-content: space-evenly;
     align-items: center;
 
+}
+
+.add {
+    background: white;
+    height: 100px;
+    position: relative;
+    width: 20px;
+}
+.add:after {
+    background: white;
+    content: "";
+    height: 20px;
+    left: -40px;
+    position: absolute;
+    top: 40px;
+    width: 100px;
+}
+
+.add:active{ 
+    background: red;
 }

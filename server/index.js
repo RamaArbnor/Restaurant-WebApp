@@ -30,6 +30,19 @@ app.post("/add/table", async (req, res) => {
     }
 })
 
+// get order of table by id
+
+app.get("/orders/:id", async (req, res) => {
+    const id = req.params.id
+    try {
+        const results = await Table.findById(id)
+        res.send(results.orders).status(200)
+    } catch (e) {
+        res.status(400).json({ error: e.message })
+        
+    }
+});
+
 // Add an item to table
 app.patch('/order', async(req, res) => {
 
