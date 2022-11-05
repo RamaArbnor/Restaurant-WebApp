@@ -66,9 +66,9 @@ app.patch('/pay', async(req, res) => {
     const {tableId} = req.body
 
     try {
-        await Table.update(
+        await Table.findOneAndUpdate(
             { _id: tableId }, 
-            {orders: []})
+            {$set: {orders: []}})
         res.status(200).json({message: 'table Cleared'})
     }catch(e) {
         res.status(400).json({error: e.message})

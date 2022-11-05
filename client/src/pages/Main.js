@@ -1,15 +1,17 @@
 import './home.css'
 import Item from '../components/Item.js'
 import { useEffect, useState } from 'react'
+import Order from '../components/Order'
 const axios = require('axios')
 
 
-export default function Main({ table, menu }) {
+export default function Main({ table, menu, category}) {
 
     const [items, setItems] = useState([])
     const [tables, setTables] = useState([])
-    const [category, setCategory] = useState('Drinks')
+    // const [category, setCategory] = useState('Food')
     const [orders, setOrders] = useState([])
+    const [total, setTotal] = useState(0.00)
 
     let img = 'https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png'
 
@@ -68,6 +70,7 @@ export default function Main({ table, menu }) {
                 // handle success
 
                 setOrders(response.data)
+                getTotal();
 
 
             })
@@ -82,21 +85,46 @@ export default function Main({ table, menu }) {
             });
     }
 
+    function getTotal(){
+        // console.log(orders)
+        let tempTotal = 0;
+        for(let i = 0; i < orders.length; i++){
+            let orderId = orders[i].id 
+            // console.log(orderId)
+            for(let j = 0; j < items.length; j++){
+                if(orderId == items[j]._id){
+                    console.log(items[j].price.$numberDecimal)
+                    tempTotal += parseFloat(items[j].price.$numberDecimal) 
+                }
+            }   
+
+        }
+        // console.log(tempTotal)
+        setTotal(tempTotal)
+        console.log(total)
+    }
+
 
     useEffect(() => {
         getItems();
         getOrders();
+        
     }, [])
+
+    useEffect(() => {
+        getTotal();
+
+    } , [orders])
 
     return (
         <div className='main-container '>
             <div className='items-menu '>
-                {true && items.map((item) => {
+                {items.map((item) => {
                     if (item.category == category) {
                         return (
                             <Item
                                 key={item._id}
-                                activeTableId={table.id}
+                                activeTableId=  {table.id}
                                 id={item._id}
                                 img={img}
                                 name={item.name}
@@ -117,16 +145,30 @@ export default function Main({ table, menu }) {
                 <div className='bill-name' onClick={() => menu('tables', 'ignore')}>
                     <p>Table #0{table.number}</p>
                 </div>
-                <div className='border'>
-                    Orders should be here
-                    {orders.map((order) => {
+                <div className='order-list'>
+                    
+                    {orders.length > 0 && orders.map((order) => {
                         let item = items.find(item => item._id === order.id)
+                        // console.log(items)
+                        if(item != undefined){
+                            let r = Math.floor(Math.random() * 10000)
+                            return (
+                                // <p>Test</p>
+                                <Order 
+                                    key = {r}
+                                    id = {item._id}
+                                    name = {item.name}
+                                    price = {item.price.$numberDecimal}
+                                    amount = {item.amount}
+                                />
+                                
+                                )
+                        }
                         
-                        return (
-                            <p>{item.name} Price: {item.price.$numberDecimal}</p>
-                            
-                            )
                     } )}
+                </div>
+                <div className='pay-section border' onClick={getTotal}>
+                    <p>{total}</p>
                 </div>
             </div>
         </div>

@@ -108,3 +108,29 @@ small{
     border-radius: 20px;
 }
 
+/****** SINGULAR ORDER CSS ******/
+
+.order{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: auto;
+    margin-top: 2rem;
+    width: 80%;
+    border: #2399BE solid 3px;
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-size: 1.3rem;
+}
+
+.order-tittle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.order-price {
+    font-weight: bold;
+    color: chartreuse;
+    display: flex;
+    flex-direction: row-reverse;
+}
