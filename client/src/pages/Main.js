@@ -93,7 +93,7 @@ export default function Main({ table, menu, category}) {
             // console.log(orderId)
             for(let j = 0; j < items.length; j++){
                 if(orderId == items[j]._id){
-                    console.log(items[j].price.$numberDecimal)
+                    // console.log(items[j].price.$numberDecimal)
                     tempTotal += parseFloat(items[j].price.$numberDecimal) 
                 }
             }   
@@ -101,7 +101,32 @@ export default function Main({ table, menu, category}) {
         }
         // console.log(tempTotal)
         setTotal(tempTotal)
-        console.log(total)
+        // console.log(total)
+    }
+
+    function delteOrder(orderId){
+        axios.patch('http://localhost:5000/delete/order',
+            {
+                tableId: table.id,
+                orderId: orderId,
+                
+            }
+        )
+            .then(function (response) {
+                // handle success
+
+                getOrders();
+
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+
+            });
     }
 
 
@@ -160,6 +185,8 @@ export default function Main({ table, menu, category}) {
                                     name = {item.name}
                                     price = {item.price.$numberDecimal}
                                     amount = {item.amount}
+
+                                    deleteHandler = {delteOrder}
                                 />
                                 
                                 )
@@ -167,8 +194,14 @@ export default function Main({ table, menu, category}) {
                         
                     } )}
                 </div>
-                <div className='pay-section border' onClick={getTotal}>
-                    <p>{total}</p>
+                <div className='pay-section ' onClick={getTotal}>
+                    <div className='total-section'>
+                        <p>Total</p>
+                        <p>{parseFloat(total)}$</p>
+                    </div>
+                    <div className='pay-button'>
+                        Pay
+                    </div>
                 </div>
             </div>
         </div>

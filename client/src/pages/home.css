@@ -87,6 +87,7 @@
     margin: 1rem;
     width: 30%;
     background-color: #FFFFFF;
+    height: 100%;
 
 }
 
@@ -141,10 +142,42 @@
 
 .order-list {
     overflow-y: scroll;
-    height: 78%;
+    height: 73%;
 }
 
 .pay-section {
-    width: 100%;
-    height: 10%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 85%;
+    height: 15%;
+
+    margin: auto;
+
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    
+    display: flex;
+    flex-direction: column;
+
+    border-top: 2px solid gray;
+    border-radius: 5px;
+
+    /* box-sizing: content-box; */
+    
+}
+
+.total-section {
+    font-size: 2rem;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.pay-button {
+    padding: 0.5rem 8rem;
+    /* width: 50%; */
+    align-self: center;
+    background-color: greenyellow;
+    font-size: 2rem;
+    border-radius: 30px;
 }

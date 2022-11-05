@@ -76,6 +76,23 @@ app.patch('/pay', async(req, res) => {
 
 })
 
+app.patch('/delete/order', async(req, res) => {
+
+    const {orderId, tableId} = req.body
+
+    try {
+        await Table.updateOne(
+            { _id: tableId }, 
+            {$pull: {orders: {id : orderId}}},
+            {multi: true}
+            ).limit(1)
+        res.status(200).json({message: 'order Deleted'})
+    }catch(e) {
+        res.status(400).json({error: e.message})
+    }
+
+})
+
 
 // Items Handeling
 
