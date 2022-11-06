@@ -23,6 +23,7 @@ export default function Home(props) {
         setCategory(category)
     }
 
+
     return (
         <div className='home'>
             {/* <Sidebar 

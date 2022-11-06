@@ -2,7 +2,9 @@ const express = require("express");
 const cors = require('cors');
 const mongoose = require('mongoose')
 const Item = require('./models/itemModel.js');
-const Table = require('./models/tableModel.js')
+const Table = require('./models/tableModel.js');
+const crypto = require("crypto")
+
 require('dotenv').config('./.env');
 
 
@@ -47,12 +49,13 @@ app.get("/orders/:id", async (req, res) => {
 app.patch('/order', async(req, res) => {
 
     const {id, amount, tableId} = req.body
-    const order = {id: id, amount: amount}
+    const order = {id: id, amount: amount, nanoId: crypto.randomUUID()}
 
     try {
         await Table.update(
             { _id: tableId }, 
-            { $push: {orders: order}})
+            {   busy: true,
+                $push: {orders: order}})
         res.status(200).json({message: 'order Added'})
     }catch(e) {
         res.status(400).json({error: e.message})
@@ -68,7 +71,8 @@ app.patch('/pay', async(req, res) => {
     try {
         await Table.findOneAndUpdate(
             { _id: tableId }, 
-            {$set: {orders: []}})
+            {   busy: false,
+                $set: {orders: []}})
         res.status(200).json({message: 'table Cleared'})
     }catch(e) {
         res.status(400).json({error: e.message})
@@ -83,7 +87,7 @@ app.patch('/delete/order', async(req, res) => {
     try {
         await Table.updateOne(
             { _id: tableId }, 
-            {$pull: {orders: {id : orderId}}},
+            {$pull: {orders: {nanoId : orderId}}},
             {multi: true}
             ).limit(1)
         res.status(200).json({message: 'order Deleted'})

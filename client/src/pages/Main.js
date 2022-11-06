@@ -8,7 +8,6 @@ const axios = require('axios')
 export default function Main({ table, menu, category}) {
 
     const [items, setItems] = useState([])
-    const [tables, setTables] = useState([])
     // const [category, setCategory] = useState('Food')
     const [orders, setOrders] = useState([])
     const [total, setTotal] = useState(0.00)
@@ -68,8 +67,8 @@ export default function Main({ table, menu, category}) {
         )
             .then(function (response) {
                 // handle success
-
                 setOrders(response.data)
+
                 getTotal();
 
 
@@ -116,6 +115,32 @@ export default function Main({ table, menu, category}) {
                 // handle success
 
                 getOrders();
+                // console.log(orderId)
+
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+
+            });
+    }
+
+    function payOrders(){
+        axios.patch('http://localhost:5000/pay',
+            {
+                tableId: table.id,
+                
+            }
+        )
+            .then(function (response) {
+                // handle success
+
+                getOrders();
+                // console.log(orderId)
 
 
             })
@@ -174,7 +199,7 @@ export default function Main({ table, menu, category}) {
                     
                     {orders.length > 0 && orders.map((order) => {
                         let item = items.find(item => item._id === order.id)
-                        // console.log(items)
+                        // console.log(order.nanoId)
                         if(item != undefined){
                             let r = Math.floor(Math.random() * 10000)
                             return (
@@ -185,6 +210,7 @@ export default function Main({ table, menu, category}) {
                                     name = {item.name}
                                     price = {item.price.$numberDecimal}
                                     amount = {item.amount}
+                                    nanoId = {order.nanoId}
 
                                     deleteHandler = {delteOrder}
                                 />
@@ -199,7 +225,7 @@ export default function Main({ table, menu, category}) {
                         <p>Total</p>
                         <p>{parseFloat(total)}$</p>
                     </div>
-                    <div className='pay-button'>
+                    <div className='pay-button' onClick={payOrders}>
                         Pay
                     </div>
                 </div>
