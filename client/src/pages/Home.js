@@ -4,13 +4,18 @@ import Nav from '../components/Nav'
 import Main from './Main'
 import { useState } from 'react'
 import TablesMenu from './TablesMenu'
+import Popup from '../components/Popup'
 
 export default function Home(props) {
 
     const [menu, setMenu] = useState('tables');
     const [activeTable, setActiveTable] = useState(1)
     const [category, setCategory] = useState('Food')
+    const [popup, setPopup] = useState(false)
 
+    const toggle = () => {
+        setPopup(!popup)
+    }
 
     function handleSidebar(tittle, activeTable){
         let a;
@@ -33,7 +38,7 @@ export default function Home(props) {
 
             {/* Left Side Of the Home Page */}
             <div className='main'>
-                <Nav categoryHandler={categoryHandler} category={category}/>
+                <Nav categoryHandler={categoryHandler} category={category} toggle={toggle} popup={popup}/>
                 
                 {menu === 'main' && <Main table={activeTable} menu={handleSidebar} category={category}/>}
 
@@ -42,6 +47,8 @@ export default function Home(props) {
                 
                 
             </div>
+
+            <Popup toggle={toggle} popup={popup}/>
         </div>
     )
 

@@ -8,10 +8,6 @@ const tableSchema = new Schema({
         default: [],
         required: true
     },
-    label: {
-        type: String,
-        required: false
-    },
     busy: {
         type: Boolean,
         default: false,

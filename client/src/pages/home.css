@@ -6,20 +6,8 @@
 
 }
 
-/*  */
-
-
-
-
-
-
-
-
-
-
 .main {
     width: 100%;
-
 }
 
 /***************** Nav Css ******************/
@@ -121,13 +109,13 @@
 }
 
 .add {
-    background: white;
+    background: greenyellow;
     height: 100px;
     position: relative;
     width: 20px;
 }
 .add:after {
-    background: white;
+    background: greenyellow;
     content: "";
     height: 20px;
     left: -40px;
@@ -137,7 +125,7 @@
 }
 
 .add:active{ 
-    background: red;
+    background: rgba(172, 255, 47, 0.432);
 }
 
 .order-list {

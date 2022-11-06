@@ -106,10 +106,10 @@ app.get("/items", async (req, res) => {
 });
 
 app.post("/add/item", async (req, res) => {
-    const { category, img, name, price } = req.body
+    const { category, image, name, price } = req.body
 
     try {
-        const item = await Item.create({ category, img, name, price })
+        const item = await Item.create({ category, image, name, price })
         res.status(200).json(item)
     } catch (e) {
         res.status(400).json({ error: e.message })

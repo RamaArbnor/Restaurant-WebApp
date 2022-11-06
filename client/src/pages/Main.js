@@ -170,13 +170,16 @@ export default function Main({ table, menu, category}) {
         <div className='main-container '>
             <div className='items-menu '>
                 {items.map((item) => {
+                    // console.log(item)
                     if (item.category == category) {
+                        // item.image == undefined ? item.image = img : item.image = ''
+                        console.log(item.image)
                         return (
                             <Item
                                 key={item._id}
                                 activeTableId=  {table.id}
                                 id={item._id}
-                                img={img}
+                                img={item.image}
                                 name={item.name}
                                 price={parseFloat(item.price.$numberDecimal)}
 

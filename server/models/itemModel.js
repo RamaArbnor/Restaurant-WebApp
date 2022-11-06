@@ -16,6 +16,7 @@ const itemSchema = new Schema({
     },
     image: {
         type: String,
+        default: "https://www.rush.edu/sites/default/files/media-images/Coffee_OpenGraph.png",
         required: false
 
     }

@@ -25,6 +25,23 @@ export default function TablesMenu({menu}) {
             });
     }
 
+    function addTable(){
+        console.log('a')
+        axios.post('http://localhost:5000/add/table')
+            .then(function (response) {
+                // handle success
+                getTables();
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+    }
+
 
     useEffect(() => {
         // gets data from db on mount
@@ -41,14 +58,14 @@ export default function TablesMenu({menu}) {
                             key = {table._id}
                             id = {table._id}
                             busy = {table.busy}
-                            number={table.label}
+                            number={tables.indexOf(table)}
                             menu = {menu}
                         />
 
                     );
                 })}
 
-            <div className='add'/>
+            <div className='add' onClick={addTable}/>
         </div>
     )
 

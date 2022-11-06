@@ -134,3 +134,52 @@ small{
     display: flex;
     flex-direction: row-reverse;
 }
+
+.popup, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+
+.add-section {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 800px;
+    min-width: 300px;
+    font-size: 1.5rem;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.add-section input, .add-section select{
+    margin: 0 1rem;
+    padding-left: 0.5rem;
+}
+
+.add-section select {
+    width: 8rem;
+}
+
+.save-btn {
+    padding: 0.3rem 2rem;
+    font-size: 1.5rem;
+}
