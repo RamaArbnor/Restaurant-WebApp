@@ -18,6 +18,9 @@ export default function Nav({categoryHandler, category, toggle, popup}) {
                 <div className={category == 'Dessert' ? 'nav-item active' : 'nav-item'} onClick={() => categoryHandler('Dessert')}>
                     DESSERT
                 </div>
+                <div className={category == 'Other' ? 'nav-item active' : 'nav-item'} onClick={() => categoryHandler('Other')}>
+                    TJETER
+                </div>
                 <div className={popup == true ? 'nav-item active' : 'nav-item'} onClick={toggle}>
                     +
                 </div>

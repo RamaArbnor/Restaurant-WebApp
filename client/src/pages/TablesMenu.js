@@ -14,6 +14,7 @@ export default function TablesMenu({menu}) {
             .then(function (response) {
                 // handle success
                 setTables(response.data);
+                console.log(response.data)
 
             })
             .catch(function (error) {
@@ -55,8 +56,8 @@ export default function TablesMenu({menu}) {
 
                     return (
                         <Table
-                            key = {table._id}
-                            id = {table._id}
+                            key = {table.id}
+                            id = {table.id}
                             busy = {table.busy}
                             number={tables.indexOf(table)}
                             menu = {menu}

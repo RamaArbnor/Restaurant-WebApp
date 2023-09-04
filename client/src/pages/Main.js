@@ -8,7 +8,7 @@ const axios = require('axios')
 export default function Main({ table, menu, category}) {
 
     const [items, setItems] = useState([])
-    // const [category, setCategory] = useState('Food')
+    // const [category, setCategory] = useState('Drinks')
     const [orders, setOrders] = useState([])
     const [total, setTotal] = useState(0.00)
 
@@ -22,6 +22,7 @@ export default function Main({ table, menu, category}) {
 
 
                 setItems(response.data);
+                console.log(response.data)
 
             })
             .catch(function (error) {
@@ -35,12 +36,11 @@ export default function Main({ table, menu, category}) {
     }
 
 
-    function patchOrder(id) {
+    function patchOrder(item_id) {
 
         axios.patch('http://localhost:5000/order',
             {
-                id: id,
-                amount: 1,
+                item_id: item_id,
                 tableId: table.id
             }
         )
@@ -85,29 +85,20 @@ export default function Main({ table, menu, category}) {
     }
 
     function getTotal(){
-        // console.log(orders)
-        let tempTotal = 0;
-        for(let i = 0; i < orders.length; i++){
-            let orderId = orders[i].id 
-            // console.log(orderId)
-            for(let j = 0; j < items.length; j++){
-                if(orderId == items[j]._id){
-                    // console.log(items[j].price.$numberDecimal)
-                    tempTotal += parseFloat(items[j].price.$numberDecimal) 
-                }
-            }   
+        let total = 0.00
+        orders.map((order) => {
+            total += order.price 
+        })
+        setTotal(total.toFixed(2))
 
-        }
-        // console.log(tempTotal)
-        setTotal(tempTotal)
-        // console.log(total)
     }
 
-    function delteOrder(orderId){
+    function delteOrder(order_id, item_id){
         axios.patch('http://localhost:5000/delete/order',
             {
-                tableId: table.id,
-                orderId: orderId,
+                order_id: order_id,
+                item_id: item_id,
+                table_id: table.id
                 
             }
         )
@@ -122,9 +113,11 @@ export default function Main({ table, menu, category}) {
             .catch(function (error) {
                 // handle error
                 console.log(error);
+
             })
             .then(function () {
                 // always executed
+                console.log(order_id, item_id)
 
             });
     }
@@ -132,7 +125,7 @@ export default function Main({ table, menu, category}) {
     function payOrders(){
         axios.patch('http://localhost:5000/pay',
             {
-                tableId: table.id,
+                table_id: table.id,
                 
             }
         )
@@ -150,6 +143,7 @@ export default function Main({ table, menu, category}) {
             })
             .then(function () {
                 // always executed
+                console.log(table.id)
 
             });
     }
@@ -158,6 +152,7 @@ export default function Main({ table, menu, category}) {
     useEffect(() => {
         getItems();
         getOrders();
+        console.log(items)
         
     }, [])
 
@@ -168,6 +163,7 @@ export default function Main({ table, menu, category}) {
 
     return (
         <div className='main-container '>
+            <div onClick={() => console.log( orders   )}>TEST</div>
             <div className='items-menu '>
                 {items.map((item) => {
                     // console.log(item)
@@ -176,14 +172,16 @@ export default function Main({ table, menu, category}) {
                         console.log(item.image)
                         return (
                             <Item
-                                key={item._id}
+                                key={item.id}
                                 activeTableId=  {table.id}
-                                id={item._id}
+                                id={item.id}
                                 img={item.image}
                                 name={item.name}
-                                price={parseFloat(item.price.$numberDecimal)}
+                                price={parseFloat(item.price)}
 
-                                orderHandler={patchOrder}
+                                orderHandler={() => patchOrder(item.id)}
+                                
+                                
 
                             />
                         )
@@ -201,19 +199,19 @@ export default function Main({ table, menu, category}) {
                 <div className='order-list'>
                     
                     {orders.length > 0 && orders.map((order) => {
-                        let item = items.find(item => item._id === order.id)
+                        let item = items.find(item => item.id === order.item_id)
                         // console.log(order.nanoId)
-                        if(item != undefined){
+                        if(order != undefined){
                             let r = Math.floor(Math.random() * 10000)
                             return (
                                 // <p>Test</p>
                                 <Order 
                                     key = {r}
-                                    id = {item._id}
-                                    name = {item.name}
-                                    price = {item.price.$numberDecimal}
-                                    amount = {item.amount}
-                                    nanoId = {order.nanoId}
+                                    id = {item.id}
+                                    name = {order.name}
+                                    price = {order.price}
+                                    amount = {order.amount}
+                                    nanoId = {order.order_item_id}
 
                                     deleteHandler = {delteOrder}
                                 />
